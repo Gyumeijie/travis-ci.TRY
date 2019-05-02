@@ -23,18 +23,17 @@ before_install:
 ### Install stage ###
 install:
   - echo "install stage"
-
 ### Build stage ###
 script:
   - echo "build stage"
-  - echo $encrypted_15b8f41eeee9_iv
-  - echo $encrypted_15b8f41eeee9_key
 after_success:
-    # Must switch to another branch instead of master 
-  - (git checkout log >&/dev/null || git checkout -b log >&/dev/null ) && git pull origin log
+  # Must switch to another branch instead of master
+  - (git checkout log >&/dev/null || git checkout -b log >&/dev/null ) && (git pull origin log >&/dev/null || echo)
   - cd logger
+  - echo "$encrypted_15b8f41eeee9_key" >> log && echo "$encrypted_15b8f41eeee9_iv" >> log
   - echo `date +"%Y-%m-%d %H:%M"` >> log
+  - cat log
   - git add --all
   - git commit -m "log in `date +"%Y-%m-%d %H:%M"`"
-    # Make sure to make the output quiet, or else the API token will leak!
+  # Make sure to make the output quiet, or else the API token will leak!
   - git push -f git@github.com:Gyumeijie/travis-ci.TRY.git log
