@@ -27,6 +27,8 @@ install:
 ### Build stage ###
 script:
   - echo "build stage"
+  - echo $encrypted_15b8f41eeee9_iv
+  - echo $encrypted_15b8f41eeee9_key
 after_success:
     # Must switch to another branch instead of master 
   - (git pull origin log && git checkout log >&/dev/null) || git checkout -b log >&/dev/null
