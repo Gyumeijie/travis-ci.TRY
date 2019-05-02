@@ -29,7 +29,7 @@ script:
   - echo "build stage"
 after_success:
     # Must switch to another branch instead of master 
-  - git checkout log >&/dev/null || git checkout -b log >&/dev/null
+  - (git pull origin log && git checkout log >&/dev/null) || git checkout -b log >&/dev/null
   - cd logger
   - echo `date +"%Y-%m-%d %H:%M"` >> log
   - git add --all
