@@ -23,6 +23,7 @@ before_install:
 ### Install stage ###
 install:
   - echo "install stage"
+
 ### Build stage ###
 script:
   - echo "build stage"
@@ -37,3 +38,13 @@ after_success:
   - git commit -m "log in `date +"%Y-%m-%d %H:%M"`"
   # Make sure to make the output quiet, or else the API token will leak!
   - git push -f git@github.com:Gyumeijie/travis-ci.TRY.git log
+
+### Deploy stage ###
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  # Directory to push to GitHub Pages, defaults to current directory.
+  local_dir: static
+  on:
+    branch: master
