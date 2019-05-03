@@ -2,6 +2,8 @@ branches:
   only:
     - master
 language: node_js
+# Caches lets Travis CI store directories between builds, which is 
+# useful for storing dependencies that take longer to compile or download.
 cache:
   bundler: true
   directories:
