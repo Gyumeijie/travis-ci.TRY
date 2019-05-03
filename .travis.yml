@@ -28,7 +28,7 @@ install:
 script:
   - echo "build stage"
 after_success:
-  # Must switch to another branch instead of master
+  # Must switch to another branch instead of master.
   - (git checkout log >&/dev/null || git checkout -b log >&/dev/null ) && (git pull origin log >&/dev/null || echo)
   - cd logger
   - echo "$encrypted_15b8f41eeee9_key" >> log && echo "$encrypted_15b8f41eeee9_iv" >> log
@@ -44,7 +44,10 @@ deploy:
   provider: pages
   skip_cleanup: true
   keep_history: true
-  # Directory to push to GitHub Pages, defaults to current directory.
+  # Set in the settings page of your working repository, as a secure variable, and is Required.
+  # https://travis-ci.[com|org]/Gyumeijie/travis-ci.TRY/settings, set environment GITHUB_TOKEN.
+  github_token: $GITHUB_TOKEN
+  # Directory to push to GitHub Pages, defaults to current directory
   local_dir: static
   on:
     branch: master
