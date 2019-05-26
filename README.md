@@ -23,7 +23,7 @@ To deactive repository,  you need go to the `https://travis-ci.[com|org]/user/re
 
 ### #2 The id_rsa should be unencrypted
 
-if the `id_rsa` is encrypted, then travis will ask `Enter passphrase for /home/travis/.ssh/id_rsa`, the following shoes how encrypted id_rsa and unencrypted one look like. 
+if the `id_rsa` is encrypted, then travis will ask `Enter passphrase for /home/travis/.ssh/id_rsa`, the following shows how encrypted id_rsa and unencrypted one look like. 
 
 A encrypted id_rsa file:
 
